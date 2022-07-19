@@ -1,6 +1,5 @@
 import { Img, Box, Text } from "@chakra-ui/react";
 import type { NextPage } from "next";
-import Head from "next/head";
 
 const Home: NextPage = () => {
   return (
@@ -18,12 +17,7 @@ const Home: NextPage = () => {
         gap: "1rem",
       }}
     >
-      <Head>
-        <title>Studio Drishti</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Img width="30%" src="/logo.svg" alt="Studio Drishti" />
-      <Text as="em">Focused Media</Text>
+      <Text as="em">Coming soon...</Text>
     </Box>
   );
 };
