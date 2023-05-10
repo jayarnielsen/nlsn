@@ -1,3 +1,16 @@
 {
-  "extends": ["next/core-web-vitals", "prettier"]
+  "root": true,
+  "extends": ["next/core-web-vitals", "@gaze-ui"],
+  "rules": {
+    "react/no-unescaped-entities": "off",
+    "jsdoc/require-jsdoc": "off"
+  },
+  "overrides": [
+    {
+      "files": ["./src/pages/**/*"],
+      "rules": {
+        "import/no-default-export": "off"
+      }
+    }
+  ]
 }

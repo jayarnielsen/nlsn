@@ -1,19 +1,17 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
-
-import { ChakraProvider, extendTheme } from "@chakra-ui/react";
-
-const theme = extendTheme({});
+import "@gaze-ui/tokens/css/variables.css";
+import "@gaze-ui/react/styles/base.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ChakraProvider theme={theme}>
+    <>
       <Head>
         <title>Jay Nielsen's Blog</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Component {...pageProps} />
-    </ChakraProvider>
+    </>
   );
 }
 

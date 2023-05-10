@@ -1,4 +1,4 @@
-import { Heading, Text } from "@chakra-ui/react";
+import { Heading, Text } from "@gaze-ui/react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { getAllPosts, getPostBySlug } from "../lib/api";
@@ -13,14 +13,14 @@ const Post: NextPage<PostProps> = ({ post }) => {
   return (
     <>
       <Head>
-        <title>Rubbish Rabble</title>
+        <title>{post.title} | Jay Nielsen's Blog</title>
       </Head>
-      <Heading>{post.title}</Heading>
+      {post.title && <Heading as="h2">{post.title}</Heading>}
       {/* <Text>{post.description}</Text> */}
       {post.contents?.map((content) => (
         <div>
           {content.split("\n\n").map((paragraph) => (
-            <Text marginBottom={2}>{paragraph}</Text>
+            <Text>{paragraph}</Text>
           ))}
         </div>
       ))}

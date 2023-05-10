@@ -10,26 +10,26 @@
     "export": "next export"
   },
   "dependencies": {
-    "@chakra-ui/react": "2.2.4",
-    "@emotion/react": "11.9.3",
-    "@emotion/styled": "11.9.3",
+    "@gaze-ui/react": "0.1.1",
+    "@gaze-ui/tokens": "0.1.0",
     "date-fns": "2.30.0",
-    "framer-motion": "6.5.0",
+    "framer-motion": "10.12.9",
     "gray-matter": "4.0.3",
-    "next": "12.2.2",
-    "normalize.css": "8.0.1",
+    "next": "13.4.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "remark": "14.0.2",
     "tesseract.js": "4.0.5"
   },
   "devDependencies": {
-    "@types/node": "18.0.3",
-    "@types/react": "18.0.15",
-    "@types/react-dom": "18.0.6",
-    "eslint": "8.19.0",
-    "eslint-config-next": "12.2.2",
-    "prettier": "2.7.1",
-    "typescript": "4.7.4"
+    "@gaze-ui/eslint-config": "0.1.0",
+    "@gaze-ui/tsconfig": "0.1.0",
+    "@types/node": "20.1.1",
+    "@types/react": "18.2.6",
+    "@types/react-dom": "18.2.4",
+    "eslint": "8.40.0",
+    "eslint-config-next": "13.4.1",
+    "prettier": "2.8.8",
+    "typescript": "5.0.4"
   }
 }

@@ -1,0 +1,23 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": ["drishti", "unoptimized", "tesseract"],
+  "ignoreWords": ["eamodio", "dbaeumer", "esbenp", "tabler", "nextjs"],
+  "flagWords": ["hte"],
+  "allowCompoundWords": true,
+  "ignorePaths": [
+    "**/node_modules/**",
+    "**/dist/**",
+    "*.svg",
+    "*.lock",
+    "cspell.json",
+    ".gitignore",
+    "CHANGELOG.md"
+  ],
+  "overrides": [
+    {
+      "filename": "**/{stories,spec,test}.{ts,tsx,js,jsx}",
+      "dictionaries": ["lorem-ipsum"]
+    }
+  ]
+}
