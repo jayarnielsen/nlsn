@@ -1,34 +1,30 @@
-import { Heading, Text } from "@gaze-ui/react";
+import { Heading, Stack, Text } from "@gaze-ui/react";
 import type { NextPage } from "next";
 import Head from "next/head";
+import Image from "next/image";
 import { getAllPosts, getPostBySlug } from "../lib/api";
 import { PostType } from "../types";
 import { recognizeText } from "../lib/recognize-text";
+import { Post } from "@/components/post";
 
 interface PostProps {
   post: PostType;
 }
 
-const Post: NextPage<PostProps> = ({ post }) => {
+const PostPage: NextPage<PostProps> = ({ post }) => {
   return (
     <>
       <Head>
-        <title>{post.title} | Jay Nielsen's Blog</title>
+        <title>{`${post.title} | NLSN`}</title>
       </Head>
-      {post.title && <Heading as="h2">{post.title}</Heading>}
+      {/* {post.title && <Heading as="h2">{post.title}</Heading>} */}
       {/* <Text>{post.description}</Text> */}
-      {post.contents?.map((content) => (
-        <div>
-          {content.split("\n\n").map((paragraph) => (
-            <Text>{paragraph}</Text>
-          ))}
-        </div>
-      ))}
+      <Post post={post} />
     </>
   );
 };
 
-export default Post;
+export default PostPage;
 
 type Params = {
   params: {
@@ -41,10 +37,10 @@ export async function getStaticProps({ params }: Params) {
     "title",
     "slug",
     "description",
-    "contents",
+    "scans",
   ]);
 
-  const contents = await recognizeText(post.slug, post.contents);
+  const contents = await recognizeText(post.slug, post.scans);
 
   return {
     props: {

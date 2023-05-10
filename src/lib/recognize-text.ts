@@ -1,12 +1,13 @@
 import { join } from "path";
 import Tesseract from "tesseract.js";
 import { postsDirectory } from "./api";
+import { Content, PostType } from "@/types";
 
 export const recognizeText = async (
   slug: string = "",
   files: string[] = []
-): Promise<string[]> => {
-  const result: string[] = [];
+): Promise<Content[]> => {
+  const result: Array<Content> = [];
   for (const file of files) {
     const {
       data: { text },
@@ -14,7 +15,10 @@ export const recognizeText = async (
       join(postsDirectory, slug, "content", file),
       "eng"
     );
-    result.push(text);
+    result.push({
+      imgSrc: file,
+      text,
+    });
   }
   return result;
 };

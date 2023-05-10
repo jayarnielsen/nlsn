@@ -1,6 +1,5 @@
 import fs from "fs";
 import { join } from "path";
-import matter from "gray-matter";
 import { compareAsc, compareDesc } from "date-fns";
 import { PostType } from "../types";
 
@@ -11,9 +10,9 @@ export function getPostSlugs() {
 }
 
 export function getPostBySlug(slug: string, fields: string[] = []): PostType {
-  const mdPath = join(postsDirectory, slug, "index.md");
-  const fileContents = fs.readFileSync(mdPath, "utf8");
-  const { data } = matter(fileContents);
+  const jsonPath = join(postsDirectory, slug, "meta.json");
+  const fileContents = fs.readFileSync(jsonPath, "utf8");
+  const data = JSON.parse(fileContents);
 
   type Items = {
     date: string;
@@ -30,7 +29,7 @@ export function getPostBySlug(slug: string, fields: string[] = []): PostType {
       items[field] = slug;
     }
 
-    if (field === "contents") {
+    if (field === "scans") {
       items[field] = fs.readdirSync(join(postsDirectory, slug, "content"));
     }
 
