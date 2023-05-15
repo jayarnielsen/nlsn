@@ -1,0 +1,4 @@
+.man {
+  border-radius: var(--size-radius-md);
+  border: 1px solid var(--color-slate-100);
+}

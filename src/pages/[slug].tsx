@@ -6,6 +6,7 @@ import { getAllPosts, getPostBySlug } from "../lib/api";
 import { PostType } from "../types";
 import { recognizeText } from "../lib/recognize-text";
 import { Post } from "@/components/post";
+import { Layout } from "@/components/layout/layout";
 
 interface PostProps {
   post: PostType;
@@ -17,9 +18,9 @@ const PostPage: NextPage<PostProps> = ({ post }) => {
       <Head>
         <title>{`${post.title} | NLSN`}</title>
       </Head>
-      {/* {post.title && <Heading as="h2">{post.title}</Heading>} */}
-      {/* <Text>{post.description}</Text> */}
-      <Post post={post} />
+      <Layout>
+        <Post post={post} />
+      </Layout>
     </>
   );
 };

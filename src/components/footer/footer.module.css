@@ -1,0 +1,8 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding-top: var(--size-space-30);
+  border-top: 1px dotted var(--color-slate-800);
+  position: relative;
+  align-items: center;
+}
