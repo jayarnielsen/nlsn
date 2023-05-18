@@ -3,6 +3,7 @@ import {
   Box,
   Center,
   Frame,
+  Grid,
   Heading,
   Separator,
   Stack,
@@ -77,6 +78,26 @@ export const Post = ({ post }: PostProps): JSX.Element => {
             </Box>
           </Stack>
         </Switcher>
+        {post.supplements && (
+          <>
+            <Separator variant="dotted" />
+            <Grid minimum="25rem" space="var(--size-space-50)">
+              {post.supplements.map((supplement) => (
+                <Frame
+                  key={supplement}
+                  aspectRatio={1}
+                  borderRadius="var(--size-radius-md)"
+                >
+                  <Image
+                    src={require(`../../posts/${post.slug}/supplements/${supplement}`)}
+                    alt={"supporting image"}
+                    placeholder="blur"
+                  />
+                </Frame>
+              ))}
+            </Grid>
+          </>
+        )}
       </Stack>
     </Center>
   );

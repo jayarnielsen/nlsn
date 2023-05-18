@@ -33,6 +33,10 @@ export function getPostBySlug(slug: string, fields: string[] = []): PostType {
       items[field] = fs.readdirSync(join(postsDirectory, slug, "content"));
     }
 
+    if (field === "supplements") {
+      items[field] = fs.readdirSync(join(postsDirectory, slug, "supplements"));
+    }
+
     if (typeof data[field] !== "undefined") {
       items[field] = data[field];
     }
