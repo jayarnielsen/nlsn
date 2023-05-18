@@ -1,4 +1,7 @@
-.man {
+.man img {
+  display: block;
   border-radius: var(--size-radius-md);
   border: 1px solid var(--color-slate-100);
+  width: 100%;
+  height: auto;
 }

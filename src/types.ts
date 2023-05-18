@@ -10,4 +10,5 @@ export type PostType = {
   description?: string;
   scans?: string[];
   contents?: Content[];
+  model?: string;
 };

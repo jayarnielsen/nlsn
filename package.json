@@ -10,22 +10,22 @@
     "export": "next export"
   },
   "dependencies": {
-    "@gaze-ui/react": "0.2.0",
-    "@gaze-ui/tokens": "0.1.0",
+    "@gaze-ui/react": "0.3.1",
+    "@gaze-ui/tokens": "0.2.0",
     "@next/font": "13.4.2",
     "date-fns": "2.30.0",
-    "framer-motion": "10.12.11",
+    "framer-motion": "10.12.12",
     "gray-matter": "4.0.3",
     "next": "13.4.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "remark": "14.0.2",
-    "tesseract.js": "4.0.5"
+    "remark": "14.0.3",
+    "tesseract.js": "4.0.6"
   },
   "devDependencies": {
     "@gaze-ui/eslint-config": "0.1.0",
     "@gaze-ui/tsconfig": "0.1.0",
-    "@types/node": "20.1.4",
+    "@types/node": "20.2.1",
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
     "eslint": "8.40.0",

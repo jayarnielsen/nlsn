@@ -39,6 +39,7 @@ export async function getStaticProps({ params }: Params) {
     "slug",
     "description",
     "scans",
+    "model",
   ]);
 
   const contents = await recognizeText(post.slug, post.scans);

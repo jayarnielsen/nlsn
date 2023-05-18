@@ -8,7 +8,7 @@ export interface LayoutProps {
 
 export const Layout = ({ children }: LayoutProps): JSX.Element => {
   return (
-    <Box paddingY="var(--size-space-30)">
+    <Box paddingY="var(--size-space-50)">
       {children}
       <Footer />
     </Box>

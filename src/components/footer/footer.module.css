@@ -5,4 +5,6 @@
   border-top: 1px dotted var(--color-slate-800);
   position: relative;
   align-items: center;
+  margin-top: var(--size-space-50);
+  padding-bottom: 0;
 }
