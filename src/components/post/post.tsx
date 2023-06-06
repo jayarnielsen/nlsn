@@ -1,5 +1,6 @@
 import { PostType } from "@/types";
 import {
+  Anchor,
   Box,
   Center,
   Frame,
@@ -29,8 +30,14 @@ export const Post = ({ post }: PostProps): JSX.Element => {
         <Switcher space="var(--size-space-50)" threshold="90rem" limit={2}>
           <Stack space="var(--size-space-50)" className={styles.man}>
             <Text>
-              This following content was typewritten by a human on a{" "}
-              {post.model} typewriter.
+              The following content was typewritten by a human on a {post.model}{" "}
+              typewriter.
+              <span className={styles.skipLink}>
+                {" "}
+                <Anchor href="#machine-translation">
+                  Skip to the machine translation.
+                </Anchor>
+              </span>
             </Text>
             {post.contents?.map((content, i) => (
               <Image
@@ -41,7 +48,7 @@ export const Post = ({ post }: PostProps): JSX.Element => {
               />
             ))}
           </Stack>
-          <Stack space="var(--size-space-50)">
+          <Stack space="var(--size-space-50)" id="machine-translation">
             <Text>
               The following content was machine translated from the typewritten
               text.
