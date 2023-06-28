@@ -111,8 +111,8 @@ export const Post = ({ post }: PostProps): JSX.Element => {
             id="comments"
             repo="jnlsn/nlsn"
             repoId="R_kgDOHr3AvQ"
-            category="Announcements"
-            categoryId="DIC_kwDOHr3Avc4CXiSy"
+            category="General"
+            categoryId="DIC_kwDOHr3Avc4CXiSz"
             mapping="specific"
             term={post.title}
             reactionsEnabled="1"
