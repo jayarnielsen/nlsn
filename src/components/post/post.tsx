@@ -14,6 +14,7 @@ import {
 import Image from "next/image";
 import * as React from "react";
 import styles from "./post.module.css";
+import Giscus from "@giscus/react";
 
 export interface PostProps {
   post: PostType;
@@ -105,6 +106,23 @@ export const Post = ({ post }: PostProps): JSX.Element => {
             </Grid>
           </>
         )}
+        <Box>
+          <Giscus
+            id="comments"
+            repo="jnlsn/nlsn"
+            repoId="R_kgDOHr3AvQ"
+            category="Announcements"
+            categoryId="DIC_kwDOHr3Avc4CXiSy"
+            mapping="specific"
+            term={post.title}
+            reactionsEnabled="1"
+            emitMetadata="0"
+            inputPosition="top"
+            theme="light"
+            lang="en"
+            loading="lazy"
+          />
+        </Box>
       </Stack>
     </Center>
   );

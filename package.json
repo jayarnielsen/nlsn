@@ -12,6 +12,7 @@
   "dependencies": {
     "@gaze-ui/react": "0.3.1",
     "@gaze-ui/tokens": "0.2.0",
+    "@giscus/react": "2.2.8",
     "@next/font": "13.4.2",
     "date-fns": "2.30.0",
     "framer-motion": "10.12.12",
