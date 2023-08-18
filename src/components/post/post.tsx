@@ -42,6 +42,7 @@ export const Post = ({ post }: PostProps): JSX.Element => {
             </Text>
             {post.contents?.map((content, i) => (
               <Image
+                key={`${content.imgSrc}-img`}
                 src={require(`../../posts/${post.slug}/content/${content.imgSrc}`)}
                 alt={`${post.title} page ${i + 1}`}
                 placeholder="blur"

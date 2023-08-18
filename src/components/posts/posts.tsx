@@ -12,7 +12,7 @@ export const Posts = ({ posts }: PostsProps): JSX.Element => {
     <Center maxWidth="100rem">
       <Stack space="var(--size-space-50)">
         {posts.map((post) => (
-          <Stack space="var(--size-space-10)">
+          <Stack key={post.title} space="var(--size-space-10)">
             {post.title && <Heading as="h5">{post.title}</Heading>}
             {post.description && <Text>{post.description}</Text>}
             {post.slug && (
