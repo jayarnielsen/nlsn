@@ -26,7 +26,7 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
 export default Home;
 
 export const getStaticProps = async () => {
-  const posts = getAllPosts(["slug", "title", "description"]);
+  const posts = getAllPosts(["slug", "title", "description", "scans"]);
   return {
     props: { posts },
   };

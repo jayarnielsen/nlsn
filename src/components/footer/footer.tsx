@@ -3,7 +3,7 @@ import * as React from "react";
 import styles from "./footer.module.css";
 
 export const Footer = (): JSX.Element => (
-  <Center maxWidth="100rem">
+  <Center maxWidth="100rem" gutter="var(--size-space-50)">
     <Box as="footer" className={styles.footer}>
       <Text>
         Built with{" "}

@@ -9,7 +9,6 @@ export type PostType = {
   date: string;
   description?: string;
   scans?: string[];
-  supplements?: string[] | null;
   contents?: Content[];
   model?: string;
 };

@@ -10,7 +10,7 @@
     "export": "next export"
   },
   "dependencies": {
-    "@gaze-ui/react": "0.3.1",
+    "@gaze-ui/react": "0.4.0",
     "@gaze-ui/tokens": "0.2.0",
     "@giscus/react": "3.0.0",
     "date-fns": "3.6.0",
@@ -23,9 +23,9 @@
     "tesseract.js": "5.1.1"
   },
   "devDependencies": {
-    "@gaze-ui/eslint-config": "0.1.0",
-    "@gaze-ui/stylelint-config": "0.0.0",
-    "@gaze-ui/tsconfig": "0.1.0",
+    "@gaze-ui/eslint-config": "1.0.0",
+    "@gaze-ui/stylelint-config": "0.1.0",
+    "@gaze-ui/tsconfig": "0.2.1",
     "@types/node": "22.5.2",
     "@types/react": "18.3.5",
     "@types/react-dom": "18.3.0",

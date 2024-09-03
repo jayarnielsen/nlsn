@@ -1,5 +1,5 @@
 {
-  "extends": "@gaze-ui/tsconfig/nextjs.json",
+  "extends": "@gaze-ui/tsconfig/react-app.json",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {

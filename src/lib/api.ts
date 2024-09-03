@@ -33,13 +33,6 @@ export function getPostBySlug(slug: string, fields: string[] = []): PostType {
       items[field] = fs.readdirSync(join(postsDirectory, slug, "content"));
     }
 
-    if (field === "supplements") {
-      const supplementsPath = join(postsDirectory, slug, "supplements");
-      items[field] = fs.existsSync(supplementsPath)
-        ? fs.readdirSync(supplementsPath)
-        : null;
-    }
-
     if (typeof data[field] !== "undefined") {
       items[field] = data[field];
     }
