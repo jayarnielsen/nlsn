@@ -1,5 +1,5 @@
 {
-  "name": "rubbish-rabble",
+  "name": "nlsn",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -12,26 +12,25 @@
   "dependencies": {
     "@gaze-ui/react": "0.3.1",
     "@gaze-ui/tokens": "0.2.0",
-    "@giscus/react": "2.2.8",
-    "@next/font": "13.4.2",
-    "date-fns": "2.30.0",
-    "framer-motion": "10.12.12",
+    "@giscus/react": "3.0.0",
+    "date-fns": "3.6.0",
     "gray-matter": "4.0.3",
-    "next": "13.4.2",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "remark": "14.0.3",
-    "tesseract.js": "4.0.6"
+    "next": "14.2.7",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remark": "15.0.1",
+    "sharp": "0.33.5",
+    "tesseract.js": "5.1.1"
   },
   "devDependencies": {
     "@gaze-ui/eslint-config": "0.1.0",
+    "@gaze-ui/stylelint-config": "0.0.0",
     "@gaze-ui/tsconfig": "0.1.0",
-    "@types/node": "20.2.1",
-    "@types/react": "18.2.6",
-    "@types/react-dom": "18.2.4",
-    "eslint": "8.40.0",
-    "eslint-config-next": "13.4.2",
-    "prettier": "2.8.8",
-    "typescript": "5.0.4"
+    "@types/node": "22.5.2",
+    "@types/react": "18.3.5",
+    "@types/react-dom": "18.3.0",
+    "eslint": "9.9.1",
+    "prettier": "3.3.3",
+    "typescript": "5.5.4"
   }
 }

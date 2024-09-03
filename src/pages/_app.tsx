@@ -1,7 +1,7 @@
 /// <reference types="styled-jsx/global" />
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import { VT323, Nunito_Sans } from "@next/font/google";
+import { VT323, Nunito_Sans } from "next/font/google";
 import "@gaze-ui/tokens/css/variables.css";
 import "@gaze-ui/react/styles/base.css";
 
