@@ -7,7 +7,7 @@ import {
   Stack,
   Text,
 } from "@gaze-ui/react";
-import Image from "next/image";
+import Image from "next-export-optimize-images/image";
 import Link from "next/link";
 import * as React from "react";
 

@@ -9,7 +9,7 @@ import {
   Text,
 } from "@gaze-ui/react";
 import Giscus from "@giscus/react";
-import Image from "next/image";
+import Image from "next-export-optimize-images/image";
 import * as React from "react";
 
 import { PostType } from "../../types";
