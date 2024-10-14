@@ -4,7 +4,7 @@ import Head from "next/head";
 import * as React from "react";
 
 import { Layout } from "../components/layout";
-import { Post } from "../components/post/post";
+import { TypewrittenPost } from "../components/typewritten-post/post";
 import { getAllPosts, getPostBySlug } from "../lib/api";
 import { recognizeText } from "../lib/recognize-text";
 import { PostType } from "../types";
@@ -20,7 +20,7 @@ const PostPage: NextPage<PostProps> = ({ post }) => {
         <title>{`${post.title ?? ""} | NLSN`}</title>
       </Head>
       <Layout>
-        <Post post={post} />
+        {post.type === "typewritten" && <TypewrittenPost post={post} />}
       </Layout>
     </>
   );
@@ -43,14 +43,13 @@ export async function getStaticProps({ params }: Params) {
     "model",
   ]);
 
-  const contents = await recognizeText(post.slug, post.scans);
+  if (post.type === "typewritten") {
+    post.contents = await recognizeText(post.slug, post.scans);
+  }
 
   return {
     props: {
-      post: {
-        ...post,
-        contents,
-      },
+      post,
     },
   };
 }

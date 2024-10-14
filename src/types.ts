@@ -1,16 +1,32 @@
-export interface Content {
+export type PostMeta = {
+  date: string;
+  title?: string;
+  description?: string;
+  slug?: string;
+};
+
+export interface TypewrittenContent {
   imgSrc: string;
   text: string;
 }
 
-export interface PostType {
-  contents?: Content[];
-  date: string;
-  description?: string;
+export interface TypewrittenPostType extends PostMeta {
+  type: "typewritten";
   model?: string;
+  contents?: TypewrittenContent[];
   scans?: string[];
-  slug?: string;
-  title?: string;
 }
 
-export type PostMeta = Record<string, string>;
+export interface AlbumPost extends PostMeta {
+  type: "album";
+  tidalId?: string;
+}
+
+export type PostType = TypewrittenPostType | AlbumPost;
+
+export type TypewrittenField = keyof Omit<
+  TypewrittenPostType,
+  "type" | "date" | "contents"
+>;
+export type AlbumField = keyof Omit<AlbumPost, "type" | "date">;
+export type PostField = TypewrittenField | AlbumField;

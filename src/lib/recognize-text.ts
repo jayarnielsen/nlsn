@@ -1,14 +1,14 @@
 import path from "node:path";
 import Tesseract from "tesseract.js";
 
-import { Content } from "../types";
+import { TypewrittenContent } from "../types";
 import { postsDirectory } from "./api";
 
 export const recognizeText = async (
   slug = "",
   files: string[] = []
-): Promise<Content[]> => {
-  const result: Content[] = [];
+): Promise<TypewrittenContent[]> => {
+  const result: TypewrittenContent[] = [];
   for (const file of files) {
     const {
       data: { text },

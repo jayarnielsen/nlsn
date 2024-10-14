@@ -12,14 +12,14 @@ import Giscus from "@giscus/react";
 import Image from "next-export-optimize-images/image";
 import * as React from "react";
 
-import { PostType } from "../../types";
+import { TypewrittenPostType } from "../../types";
 import styles from "./post.module.css";
 
 export interface PostProps {
-  post: PostType;
+  post: TypewrittenPostType;
 }
 
-export const Post = ({ post }: PostProps) => {
+export const TypewrittenPost = ({ post }: PostProps) => {
   return (
     <Center gutter="var(--gaze-space-50)" maxWidth="100rem">
       <Stack space="var(--gaze-space-30)">

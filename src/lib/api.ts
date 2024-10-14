@@ -1,8 +1,8 @@
-import { compareDesc } from "date-fns";
+import { compareDesc, parse } from "date-fns";
 import fs from "node:fs";
 import path from "node:path";
 
-import { PostMeta, PostType } from "../types";
+import { PostField, PostType } from "../types";
 
 export const postsDirectory = path.join(process.cwd(), "src/posts");
 
@@ -10,18 +10,17 @@ export function getPostSlugs() {
   return fs.readdirSync(postsDirectory);
 }
 
-export function getPostBySlug(slug: string, fields: string[] = []): PostType {
+export function getPostBySlug(
+  slug: string,
+  fields: PostField[] = []
+): PostType {
   const jsonPath = path.join(postsDirectory, slug, "meta.json");
   const fileContents = fs.readFileSync(jsonPath, "utf8");
-  const data = JSON.parse(fileContents) as PostMeta;
+  const data = JSON.parse(fileContents) as Record<string, string>;
 
-  interface Items {
-    [key: string]: unknown;
-    date: string;
-  }
-
-  const items: Items = {
-    date: data.date ? data.date.toString() : new Date().toString(),
+  const items: PostType = {
+    type: data.type as PostType["type"],
+    date: data.date,
   };
 
   // Ensure only the minimal needed data is exposed
@@ -30,11 +29,19 @@ export function getPostBySlug(slug: string, fields: string[] = []): PostType {
       items[field] = slug;
     }
 
-    if (field === "scans") {
+    if (field === "title" || field === "description") {
+      items[field] = data[field];
+    }
+
+    if (items.type === "typewritten" && field === "scans") {
       items[field] = fs.readdirSync(path.join(postsDirectory, slug, "content"));
     }
 
-    if (data[field]) {
+    if (items.type === "typewritten" && field === "model") {
+      items[field] = data[field];
+    }
+
+    if (items.type === "album" && field === "tidalId") {
       items[field] = data[field];
     }
   }
@@ -42,13 +49,16 @@ export function getPostBySlug(slug: string, fields: string[] = []): PostType {
   return items;
 }
 
-export function getAllPosts(fields: string[] = []): PostType[] {
+export function getAllPosts(fields: PostField[] = []): PostType[] {
   const slugs = getPostSlugs();
   const posts = slugs
     .map((slug) => getPostBySlug(slug, fields))
     // sort posts by date in descending order
     .sort((post1, post2) =>
-      compareDesc(new Date(post1.date), new Date(post2.date))
+      compareDesc(
+        parse(post1.date, "MMMM yyyy", new Date()),
+        parse(post2.date, "MMMM yyyy", new Date())
+      )
     );
   return posts;
 }
