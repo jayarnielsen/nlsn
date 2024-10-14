@@ -1,39 +1,38 @@
-import { PostType } from "@/types";
 import {
   Anchor,
   Box,
   Center,
-  Frame,
-  Grid,
   Heading,
   Separator,
   Stack,
   Switcher,
   Text,
 } from "@gaze-ui/react";
+import Giscus from "@giscus/react";
 import Image from "next/image";
 import * as React from "react";
+
+import { PostType } from "../../types";
 import styles from "./post.module.css";
-import Giscus from "@giscus/react";
 
 export interface PostProps {
   post: PostType;
 }
 
-export const Post = ({ post }: PostProps): JSX.Element => {
+export const Post = ({ post }: PostProps) => {
   return (
-    <Center maxWidth="100rem" gutter="var(--size-space-50)">
-      <Stack space="var(--size-space-30)">
+    <Center gutter="var(--gaze-space-50)" maxWidth="100rem">
+      <Stack space="var(--gaze-space-30)">
         {post.title && <Heading as="h1">{post.title}</Heading>}
         {post.description && (
-          <Text fontSize="var(--size-font-2xl)">{post.description}</Text>
+          <Text fontSize="var(--gaze-font-size-2xl)">{post.description}</Text>
         )}
-        <Switcher space="var(--size-space-50)" threshold="90rem" limit={2}>
-          <Stack space="var(--size-space-50)" className={styles.man}>
+        <Switcher limit={2} space="var(--gaze-space-50)" threshold="90rem">
+          <Stack className={styles.man} space="var(--gaze-space-50)">
             <Text>
               The following content was typewritten by a human on a {post.model}{" "}
               typewriter.
-              <span className={styles.skipLink}>
+              <span className={styles["skip-link"]}>
                 {" "}
                 <Anchor href="#machine-translation">
                   Skip to the machine translation.
@@ -42,47 +41,50 @@ export const Post = ({ post }: PostProps): JSX.Element => {
             </Text>
             {post.contents?.map((content, i) => (
               <Image
+                alt={`${post.title ?? ""} page ${(i + 1).toString()}`}
+                aria-describedby={`page-${i.toString()}`}
                 key={`${content.imgSrc}-img`}
+                placeholder="blur"
                 src={require(
                   `../../posts/${post.slug}/content/${content.imgSrc}`
                 )}
-                alt={`${post.title} page ${i + 1}`}
-                placeholder="blur"
-                aria-describedby={`page-${i}`}
               />
             ))}
           </Stack>
-          <Stack space="var(--size-space-50)" id="machine-translation">
+          <Stack id="machine-translation" space="var(--gaze-space-50)">
             <Text>
               The following content was machine translated from the typewritten
               text.
             </Text>
             <Box
-              background="var(--color-slate-900)"
-              padding="var(--size-space-100)"
-              borderRadius="var(--size-radius-md)"
+              background="var(--gaze-color-slate-900)"
+              borderRadius="var(--gaze-radius-md)"
               data-invert={true}
+              padding="var(--gaze-space-100)"
             >
               {post.contents && (
-                <Stack space="var(--size-space-100)">
-                  {post.contents?.map((content, i) => (
+                <Stack space="var(--gaze-space-100)">
+                  {post.contents.map((content, i) => (
                     <React.Fragment key={`${content.imgSrc}-text`}>
                       <Stack
-                        space="var(--size-space-20)"
                         className={styles.machine}
                         id={`page-${i}`}
+                        space="var(--gaze-space-20)"
                       >
                         {content.text.split("\n\n").map((paragraph) => (
-                          <Text fontSize="var(--size-font-xl)" key={paragraph}>
+                          <Text
+                            fontSize="var(--gaze-font-size-xl)"
+                            key={paragraph}
+                          >
                             {paragraph}
                           </Text>
                         ))}
                       </Stack>
-                      {i < (post.contents?.length || 0) - 1 && (
+                      {i < (post.contents?.length ?? 0) - 1 && (
                         <Separator
+                          color="var(--gaze-color-white)"
+                          thickness="var(--gaze-border-width-2)"
                           variant="dotted"
-                          thickness="var(--size-border-2)"
-                          color="var(--color-white)"
                         />
                       )}
                     </React.Fragment>
@@ -94,19 +96,19 @@ export const Post = ({ post }: PostProps): JSX.Element => {
         </Switcher>
         <Box>
           <Giscus
-            id="comments"
-            repo="jnlsn/nlsn"
-            repoId="R_kgDOHr3AvQ"
             category="General"
             categoryId="DIC_kwDOHr3Avc4CXiSz"
-            mapping="specific"
-            term={post.title}
-            reactionsEnabled="1"
             emitMetadata="0"
+            id="comments"
             inputPosition="top"
-            theme="light"
             lang="en"
             loading="lazy"
+            mapping="specific"
+            reactionsEnabled="1"
+            repo="jnlsn/nlsn"
+            repoId="R_kgDOHr3AvQ"
+            term={post.title}
+            theme="light"
           />
         </Box>
       </Stack>

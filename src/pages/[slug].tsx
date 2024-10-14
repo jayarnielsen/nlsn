@@ -1,12 +1,13 @@
-import { Heading, Stack, Text } from "@gaze-ui/react";
 import type { NextPage } from "next";
+
 import Head from "next/head";
-import Image from "next/image";
+import * as React from "react";
+
+import { Layout } from "../components/layout";
+import { Post } from "../components/post/post";
 import { getAllPosts, getPostBySlug } from "../lib/api";
-import { PostType } from "../types";
 import { recognizeText } from "../lib/recognize-text";
-import { Post } from "@/components/post";
-import { Layout } from "@/components/layout/layout";
+import { PostType } from "../types";
 
 interface PostProps {
   post: PostType;
@@ -16,7 +17,7 @@ const PostPage: NextPage<PostProps> = ({ post }) => {
   return (
     <>
       <Head>
-        <title>{`${post.title} | NLSN`}</title>
+        <title>{`${post.title ?? ""} | NLSN`}</title>
       </Head>
       <Layout>
         <Post post={post} />
@@ -27,11 +28,11 @@ const PostPage: NextPage<PostProps> = ({ post }) => {
 
 export default PostPage;
 
-type Params = {
+interface Params {
   params: {
     slug: string;
   };
-};
+}
 
 export async function getStaticProps({ params }: Params) {
   const post = getPostBySlug(params.slug, [
@@ -54,10 +55,11 @@ export async function getStaticProps({ params }: Params) {
   };
 }
 
-export async function getStaticPaths() {
+export function getStaticPaths() {
   const posts = getAllPosts(["slug"]);
 
   return {
+    fallback: false,
     paths: posts.map((post) => {
       return {
         params: {
@@ -65,6 +67,5 @@ export async function getStaticPaths() {
         },
       };
     }),
-    fallback: false,
   };
 }

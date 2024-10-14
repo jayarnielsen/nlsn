@@ -1,18 +1,19 @@
-import { join } from "path";
+import path from "node:path";
 import Tesseract from "tesseract.js";
+
+import { Content } from "../types";
 import { postsDirectory } from "./api";
-import { Content, PostType } from "@/types";
 
 export const recognizeText = async (
-  slug: string = "",
+  slug = "",
   files: string[] = []
 ): Promise<Content[]> => {
-  const result: Array<Content> = [];
+  const result: Content[] = [];
   for (const file of files) {
     const {
       data: { text },
     } = await Tesseract.recognize(
-      join(postsDirectory, slug, "content", file),
+      path.join(postsDirectory, slug, "content", file),
       "eng"
     );
     result.push({

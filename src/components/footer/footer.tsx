@@ -1,9 +1,10 @@
 import { Anchor, Box, Center, Text } from "@gaze-ui/react";
 import * as React from "react";
+
 import styles from "./footer.module.css";
 
-export const Footer = (): JSX.Element => (
-  <Center maxWidth="100rem" gutter="var(--size-space-50)">
+export const Footer = () => (
+  <Center gutter="var(--gaze-space-50)" maxWidth="100rem">
     <Box as="footer" className={styles.footer}>
       <Text>
         Built with{" "}

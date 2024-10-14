@@ -1,10 +1,11 @@
 .footer {
-  display: flex;
-  justify-content: space-between;
-  padding-top: var(--size-space-30);
-  border-top: 1px dotted var(--color-slate-800);
   position: relative;
+  display: flex;
+  flex-wrap: nowrap;
   align-items: center;
-  margin-top: var(--size-space-50);
+  justify-content: space-between;
+  margin-top: var(--gaze-space-50);
+  padding-top: var(--gaze-space-30);
   padding-bottom: 0;
+  border-top: 1px dotted var(--gaze-color-slate-800);
 }

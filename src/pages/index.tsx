@@ -1,10 +1,12 @@
-import { Layout } from "@/components/layout/layout";
-import { Posts } from "@/components/posts";
-import { getAllPosts } from "@/lib/api";
-import { PostType } from "@/types";
-import { Box, Center, Text } from "@gaze-ui/react";
 import type { NextPage } from "next";
+
 import Head from "next/head";
+import * as React from "react";
+
+import { Layout } from "../components/layout";
+import { Posts } from "../components/posts";
+import { getAllPosts } from "../lib/api";
+import { PostType } from "../types";
 
 interface HomeProps {
   posts: PostType[];
@@ -25,7 +27,7 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
 
 export default Home;
 
-export const getStaticProps = async () => {
+export const getStaticProps = () => {
   const posts = getAllPosts(["slug", "title", "description", "scans"]);
   return {
     props: { posts },

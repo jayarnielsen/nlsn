@@ -1,42 +1,43 @@
-import fs from "fs";
-import { join } from "path";
-import { compareAsc, compareDesc } from "date-fns";
-import { PostType } from "../types";
+import { compareDesc } from "date-fns";
+import fs from "node:fs";
+import path from "node:path";
 
-export const postsDirectory = join(process.cwd(), "src/posts");
+import { PostMeta, PostType } from "../types";
+
+export const postsDirectory = path.join(process.cwd(), "src/posts");
 
 export function getPostSlugs() {
   return fs.readdirSync(postsDirectory);
 }
 
 export function getPostBySlug(slug: string, fields: string[] = []): PostType {
-  const jsonPath = join(postsDirectory, slug, "meta.json");
+  const jsonPath = path.join(postsDirectory, slug, "meta.json");
   const fileContents = fs.readFileSync(jsonPath, "utf8");
-  const data = JSON.parse(fileContents);
+  const data = JSON.parse(fileContents) as PostMeta;
 
-  type Items = {
-    date: string;
+  interface Items {
     [key: string]: unknown;
-  };
+    date: string;
+  }
 
   const items: Items = {
     date: data.date ? data.date.toString() : new Date().toString(),
   };
 
   // Ensure only the minimal needed data is exposed
-  fields.forEach((field) => {
+  for (const field of fields) {
     if (field === "slug") {
       items[field] = slug;
     }
 
     if (field === "scans") {
-      items[field] = fs.readdirSync(join(postsDirectory, slug, "content"));
+      items[field] = fs.readdirSync(path.join(postsDirectory, slug, "content"));
     }
 
-    if (typeof data[field] !== "undefined") {
+    if (data[field]) {
       items[field] = data[field];
     }
-  });
+  }
 
   return items;
 }

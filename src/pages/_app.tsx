@@ -1,37 +1,38 @@
 /// <reference types="styled-jsx/global" />
 import type { AppProps } from "next/app";
-import Head from "next/head";
-import { VT323, Nunito_Sans } from "next/font/google";
+
+import "@gaze-ui/react/styles.css";
 import "@gaze-ui/tokens/css/variables.css";
-import "@gaze-ui/react/styles/base.css";
+import { Nunito_Sans, VT323 } from "next/font/google";
+import Head from "next/head";
+import * as React from "react";
 
 const vt323 = VT323({
-  weight: "400",
   subsets: ["latin"],
+  weight: "400",
 });
 
 const nunito = Nunito_Sans({
-  weight: "200",
   subsets: ["latin"],
+  weight: "200",
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      {/* eslint-disable-next-line react/no-unknown-property */}
+      {/* eslint-disable-next-line react/no-unknown-property, sonarjs/no-unknown-property */}
       <style global jsx>{`
         :root {
-          --text-color: var(--color-slate-800);
-          --body-weight: 600;
-          --body-font: ${vt323.style.fontFamily};
-          --body-weight: ${vt323.style.fontWeight};
-          --heading-font: ${nunito.style.fontFamily};
-          --heading-weight: ${nunito.style.fontWeight};
+          --gaze-color-text-default: var(--gaze-color-slate-800);
+          --gaze-font-family-base: ${vt323.style.fontFamily};
+          --gaze-font-family-heading: ${nunito.style.fontFamily};
+          --gaze-text-weight: ${vt323.style.fontWeight?.toString() ?? ""};
+          --gaze-heading-weight: ${nunito.style.fontWeight?.toString() ?? ""};
         }
       `}</style>
       <Head>
-        <title>Jay Nielsen's Blog</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Jay Nielsen&apos;s Blog</title>
+        <link href="/favicon.ico" rel="icon" />
       </Head>
       <Component {...pageProps} />
     </>

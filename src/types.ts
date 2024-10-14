@@ -1,14 +1,16 @@
-export type Content = {
+export interface Content {
   imgSrc: string;
   text: string;
-};
+}
 
-export type PostType = {
-  slug?: string;
-  title?: string;
+export interface PostType {
+  contents?: Content[];
   date: string;
   description?: string;
-  scans?: string[];
-  contents?: Content[];
   model?: string;
-};
+  scans?: string[];
+  slug?: string;
+  title?: string;
+}
+
+export type PostMeta = Record<string, string>;

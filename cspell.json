@@ -8,7 +8,9 @@
     "dbaeumer",
     "esbenp",
     "tabler",
-    "nextjs"
+    "nextjs",
+    "jnlsn",
+    "sonarjs"
   ],
   "flagWords": ["hte"],
   "allowCompoundWords": true,
