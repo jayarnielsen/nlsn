@@ -8,6 +8,8 @@ import { TypewrittenPost } from "../components/typewritten-post/post";
 import { getAllPosts, getPostBySlug } from "../lib/api";
 import { recognizeText } from "../lib/recognize-text";
 import { PostType } from "../types";
+import { AlbumPost } from "../components/album-post/album-post";
+import mdToHtml from "../lib/md-to-html";
 
 interface PostProps {
   post: PostType;
@@ -21,6 +23,7 @@ const PostPage: NextPage<PostProps> = ({ post }) => {
       </Head>
       <Layout>
         {post.type === "typewritten" && <TypewrittenPost post={post} />}
+        {post.type === "album" && <AlbumPost post={post} />}
       </Layout>
     </>
   );
@@ -37,8 +40,14 @@ interface Params {
 export async function getStaticProps({ params }: Params) {
   const post = getPostBySlug(params.slug);
 
-  if (post.type === "typewritten") {
-    post.contents = await recognizeText(post.slug, post.scans);
+  switch (post.type) {
+    case "typewritten":
+      post.contents = await recognizeText(post.slug, post.scans);
+
+      break;
+    case "album":
+      post.content = await mdToHtml(post.content ?? "");
+      break;
   }
 
   return {

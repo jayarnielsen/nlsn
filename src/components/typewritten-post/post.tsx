@@ -92,6 +92,11 @@ export const TypewrittenPost = ({ post }: PostProps) => {
             </Box>
           </Stack>
         </Switcher>
+        <Separator
+          variant="dotted"
+          color="var(--gaze-color-slate-200)"
+          thickness="var(--gaze-border-width-px)"
+        />
         <Box>
           <Giscus
             category="General"
@@ -102,7 +107,7 @@ export const TypewrittenPost = ({ post }: PostProps) => {
             lang="en"
             loading="lazy"
             mapping="specific"
-            reactionsEnabled="1"
+            reactionsEnabled="0"
             repo="jnlsn/nlsn"
             repoId="R_kgDOHr3AvQ"
             term={post.title}

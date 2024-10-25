@@ -4,7 +4,7 @@ import Link from "next/link";
 import * as React from "react";
 
 import { TypewrittenPostType } from "../../types";
-import styles from "./posts.module.css";
+import styles from "./typewritten-post-preview.module.css";
 
 export interface PostsProps {
   post: TypewrittenPostType;

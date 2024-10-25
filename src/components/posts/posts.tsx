@@ -3,7 +3,8 @@ import { Center, Grid, Heading, Stack } from "@gaze-ui/react";
 import * as React from "react";
 
 import { PostType } from "../../types";
-import { TypewrittenPostPreview } from "./typewritten-post-preview";
+import { TypewrittenPostPreview } from "../typewritten-post/typewritten-post-preview";
+import { AlbumPostPreview } from "../album-post/album-post-preview";
 
 export interface PostsProps {
   posts: PostType[];
@@ -19,6 +20,9 @@ export const Posts = ({ posts }: PostsProps) => {
             switch (post.type) {
               case "typewritten": {
                 return <TypewrittenPostPreview key={post.title} post={post} />;
+              }
+              case "album": {
+                return <AlbumPostPreview key={post.title} post={post} />;
               }
             }
           })}
