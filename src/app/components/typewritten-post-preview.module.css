@@ -1,0 +1,19 @@
+.frame {
+  position: relative;
+  pointer-events: none;
+
+  &::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    height: 25%;
+    background: linear-gradient(to top, var(--gaze-color-white), transparent);
+    content: "";
+  }
+
+  & > img {
+    object-position: top;
+  }
+}

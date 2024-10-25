@@ -1,16 +1,24 @@
-import { Heading, LinkBox, LinkOverlay, Stack, Text } from "@gaze-ui/react";
-import Image from "next-export-optimize-images/image";
+import {
+  Frame,
+  Heading,
+  LinkBox,
+  LinkOverlay,
+  Stack,
+  Text,
+} from "@gaze-ui/react";
+import Image from "next/image";
 import Link from "next/link";
 import * as React from "react";
 
 import { TypewrittenPostType } from "../../types";
-import styles from "./posts.module.css";
+import styles from "./typewritten-post-preview.module.css";
 
 export interface PostsProps {
   post: TypewrittenPostType;
 }
 
 export const TypewrittenPostPreview = ({ post }: PostsProps) => {
+  const thumb = post.scans?.shift();
   return (
     <LinkBox key={post.title}>
       <Stack className={styles.brick} space="var(--gaze-space-20)">
@@ -24,19 +32,15 @@ export const TypewrittenPostPreview = ({ post }: PostsProps) => {
           )}
           {post.description && <Text>{post.description}</Text>}
         </Stack>
-        {post.scans && (
+        {thumb && (
           <div className={styles["type-written"]}>
-            {post.scans.map((imgSrc, i) => (
-              <div key={imgSrc}>
-                <Image
-                  alt={`${post.title ?? ""} page ${(i + 1).toString()}`}
-                  key={`${imgSrc}-img`}
-                  placeholder="blur"
-                  src={require(`../../posts/${post.slug}/content/${imgSrc}`)}
-                  width={250}
-                />
-              </div>
-            ))}
+            <Frame aspectRatio={1} className={styles.frame}>
+              <Image
+                alt={`${post.title ?? ""}`}
+                src={`/scans/${post.slug}/${thumb}`}
+                fill
+              />
+            </Frame>
           </div>
         )}
       </Stack>

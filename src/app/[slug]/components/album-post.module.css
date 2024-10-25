@@ -1,0 +1,17 @@
+.md {
+  font-family: var(--gaze-font-family-base);
+
+  & p {
+    margin: 0;
+    font-size: var(--gaze-font-size-xl);
+  }
+
+  & p + p {
+    margin-block-start: 1rem;
+  }
+}
+
+.tidal-iframe {
+  width: 100%;
+  min-height: 325px;
+}
