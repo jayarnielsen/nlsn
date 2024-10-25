@@ -43,11 +43,9 @@ export const TypewrittenPost = ({ post }: PostProps) => {
               <Image
                 alt={`${post.title ?? ""} page ${(i + 1).toString()}`}
                 aria-describedby={`page-${i.toString()}`}
-                key={`${content.imgSrc}-img`}
+                key={content.imgSrc}
                 placeholder="blur"
-                src={require(
-                  `../../posts/${post.slug}/content/${content.imgSrc}`
-                )}
+                src={require(`../../scans/${post.slug}/${content.imgSrc}`)}
               />
             ))}
           </Stack>
@@ -65,7 +63,7 @@ export const TypewrittenPost = ({ post }: PostProps) => {
               {post.contents && (
                 <Stack space="var(--gaze-space-100)">
                   {post.contents.map((content, i) => (
-                    <React.Fragment key={`${content.imgSrc}-text`}>
+                    <React.Fragment key={content.imgSrc}>
                       <Stack
                         className={styles.machine}
                         id={`page-${i}`}

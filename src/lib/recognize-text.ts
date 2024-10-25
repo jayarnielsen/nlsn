@@ -2,7 +2,7 @@ import path from "node:path";
 import Tesseract from "tesseract.js";
 
 import { TypewrittenContent } from "../types";
-import { postsDirectory } from "./api";
+import { scansDirectory } from "./api";
 
 export const recognizeText = async (
   slug = "",
@@ -12,10 +12,7 @@ export const recognizeText = async (
   for (const file of files) {
     const {
       data: { text },
-    } = await Tesseract.recognize(
-      path.join(postsDirectory, slug, "content", file),
-      "eng"
-    );
+    } = await Tesseract.recognize(path.join(scansDirectory, slug, file), "eng");
     result.push({
       imgSrc: file,
       text,

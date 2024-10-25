@@ -1,58 +1,56 @@
 import { compareDesc, parse } from "date-fns";
 import fs from "node:fs";
 import path from "node:path";
+import matter from "gray-matter";
 
-import { PostField, PostType } from "../types";
+import { PostType } from "../types";
 
 export const postsDirectory = path.join(process.cwd(), "src/posts");
+export const scansDirectory = path.join(process.cwd(), "src/scans");
 
 export function getPostSlugs() {
-  return fs.readdirSync(postsDirectory);
+  return fs.readdirSync(postsDirectory).map((file) => file.replace(".md", ""));
 }
 
-export function getPostBySlug(
-  slug: string,
-  fields: PostField[] = []
-): PostType {
-  const jsonPath = path.join(postsDirectory, slug, "meta.json");
-  const fileContents = fs.readFileSync(jsonPath, "utf8");
-  const data = JSON.parse(fileContents) as Record<string, string>;
+export function getPostBySlug(slug: string): PostType {
+  const mdPath = path.join(postsDirectory, `${slug}.md`);
+  const fileContents = fs.readFileSync(mdPath, "utf8");
+  const md = matter(fileContents);
 
-  const items: PostType = {
-    type: data.type as PostType["type"],
-    date: data.date,
+  let data: PostType = {
+    slug,
+    type: md.data.type,
+    date: md.data.date,
+    title: md.data.title,
+    description: md.data.description,
   };
 
-  // Ensure only the minimal needed data is exposed
-  for (const field of fields) {
-    if (field === "slug") {
-      items[field] = slug;
-    }
-
-    if (field === "title" || field === "description") {
-      items[field] = data[field];
-    }
-
-    if (items.type === "typewritten" && field === "scans") {
-      items[field] = fs.readdirSync(path.join(postsDirectory, slug, "content"));
-    }
-
-    if (items.type === "typewritten" && field === "model") {
-      items[field] = data[field];
-    }
-
-    if (items.type === "album" && field === "tidalId") {
-      items[field] = data[field];
-    }
+  switch (data.type) {
+    case "typewritten":
+      data = {
+        ...data,
+        model: md.data.model,
+        scans: fs.readdirSync(path.join(scansDirectory, slug)),
+      };
+      break;
+    case "album":
+      data = {
+        ...data,
+        content: md.content,
+        tidalId: md.data.tidalId,
+      };
+      break;
+    default:
+      throw new Error(`Invalid content type`);
   }
 
-  return items;
+  return data;
 }
 
-export function getAllPosts(fields: PostField[] = []): PostType[] {
+export function getAllPosts(): PostType[] {
   const slugs = getPostSlugs();
   const posts = slugs
-    .map((slug) => getPostBySlug(slug, fields))
+    .map((slug) => getPostBySlug(slug))
     // sort posts by date in descending order
     .sort((post1, post2) =>
       compareDesc(

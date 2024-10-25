@@ -35,13 +35,7 @@ interface Params {
 }
 
 export async function getStaticProps({ params }: Params) {
-  const post = getPostBySlug(params.slug, [
-    "title",
-    "slug",
-    "description",
-    "scans",
-    "model",
-  ]);
+  const post = getPostBySlug(params.slug);
 
   if (post.type === "typewritten") {
     post.contents = await recognizeText(post.slug, post.scans);
@@ -55,7 +49,7 @@ export async function getStaticProps({ params }: Params) {
 }
 
 export function getStaticPaths() {
-  const posts = getAllPosts(["slug"]);
+  const posts = getAllPosts();
 
   return {
     fallback: false,

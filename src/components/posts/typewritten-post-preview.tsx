@@ -32,7 +32,7 @@ export const TypewrittenPostPreview = ({ post }: PostsProps) => {
                   alt={`${post.title ?? ""} page ${(i + 1).toString()}`}
                   key={`${imgSrc}-img`}
                   placeholder="blur"
-                  src={require(`../../posts/${post.slug}/content/${imgSrc}`)}
+                  src={require(`../../scans/${post.slug}/${imgSrc}`)}
                   width={250}
                 />
               </div>

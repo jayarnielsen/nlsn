@@ -20,6 +20,7 @@ export interface TypewrittenPostType extends PostMeta {
 export interface AlbumPost extends PostMeta {
   type: "album";
   tidalId?: string;
+  content?: string;
 }
 
 export type PostType = TypewrittenPostType | AlbumPost;

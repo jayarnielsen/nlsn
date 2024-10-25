@@ -1,5 +1,11 @@
 {
   "extends": "@gaze-ui/tsconfig/react-app.json",
-  "include": ["next-env.d.ts", "src"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "src",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
