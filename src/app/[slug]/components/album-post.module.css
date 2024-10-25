@@ -3,6 +3,7 @@
 
   & p {
     margin: 0;
+    font-size: var(--gaze-font-size-xl);
   }
 
   & p + p {
