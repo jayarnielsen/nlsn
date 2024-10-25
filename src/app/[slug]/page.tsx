@@ -1,7 +1,6 @@
 import Head from "next/head";
 import * as React from "react";
 
-import { SiteLayout } from "../../components/layout";
 import { TypewrittenPost } from "../../components/typewritten-post/typewritten-post";
 import { getAllPosts, getPostBySlug } from "../../lib/api";
 import { recognizeText } from "../../lib/recognize-text";
@@ -42,17 +41,15 @@ export default async function Page({ params }: Props) {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
   return (
-    <SiteLayout>
-      <Stack space="var(--gaze-space-100)">
-        {await renderPost(post)}
-        <Separator
-          variant="dotted"
-          color="var(--gaze-color-slate-200)"
-          thickness="var(--gaze-border-width-px)"
-        />
-        <Comments title={post.title} />
-      </Stack>
-    </SiteLayout>
+    <Stack space="var(--gaze-space-100)">
+      {await renderPost(post)}
+      <Separator
+        variant="dotted"
+        color="var(--gaze-color-slate-200)"
+        thickness="var(--gaze-border-width-px)"
+      />
+      <Comments title={post.title} />
+    </Stack>
   );
 }
 
