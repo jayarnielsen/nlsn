@@ -1,13 +1,15 @@
 export type PostMeta = {
   date: string;
-  title?: string;
+  title: string;
   description?: string;
-  slug?: string;
+  slug: string;
 };
 
 export interface TypewrittenContent {
   imgSrc: string;
   text: string;
+  width: number;
+  height: number;
 }
 
 export interface TypewrittenPostType extends PostMeta {

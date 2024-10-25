@@ -12,22 +12,20 @@ export interface PostsProps {
 
 export const Posts = ({ posts }: PostsProps) => {
   return (
-    <Center gutter="var(--gaze-space-50)" maxWidth="100rem">
-      <Stack space="var(--gaze-space-50)">
-        <Heading as="h1">NLSN &times; Soliloquy Stream</Heading>
-        <Grid minimum="20rem" space="var(--gaze-space-50)">
-          {posts.map((post) => {
-            switch (post.type) {
-              case "typewritten": {
-                return <TypewrittenPostPreview key={post.title} post={post} />;
-              }
-              case "album": {
-                return <AlbumPostPreview key={post.title} post={post} />;
-              }
+    <Stack space="var(--gaze-space-50)">
+      <Heading as="h1">NLSN &times; Soliloquy Stream</Heading>
+      <Grid minimum="20rem" space="var(--gaze-space-50)">
+        {posts.map((post) => {
+          switch (post.type) {
+            case "typewritten": {
+              return <TypewrittenPostPreview key={post.title} post={post} />;
             }
-          })}
-        </Grid>
-      </Stack>
-    </Center>
+            case "album": {
+              return <AlbumPostPreview key={post.title} post={post} />;
+            }
+          }
+        })}
+      </Grid>
+    </Stack>
   );
 };

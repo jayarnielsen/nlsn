@@ -6,7 +6,7 @@ import matter from "gray-matter";
 import { PostType } from "../types";
 
 export const postsDirectory = path.join(process.cwd(), "src/posts");
-export const scansDirectory = path.join(process.cwd(), "src/scans");
+export const scansDirectory = path.join(process.cwd(), "public/scans");
 
 export function getPostSlugs() {
   return fs.readdirSync(postsDirectory).map((file) => file.replace(".md", ""));

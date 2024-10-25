@@ -1,1 +1,1 @@
-export * from "./post";
+export * from "./typewritten-post";

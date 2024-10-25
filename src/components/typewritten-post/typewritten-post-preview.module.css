@@ -1,14 +1,19 @@
-.type-written {
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: flex-start;
+.frame {
+  position: relative;
+  pointer-events: none;
 
-  & img {
+  &::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
     display: block;
+    height: 25%;
+    background: linear-gradient(to top, var(--gaze-color-white), transparent);
+    content: "";
   }
 
-  & > div {
-    overflow: hidden;
-    box-shadow: 0 0.15rem 0.25rem rgb(0 0 0 / 15%);
+  & > img {
+    object-position: top;
   }
 }
