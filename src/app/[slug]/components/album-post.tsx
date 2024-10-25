@@ -1,7 +1,7 @@
 import { Box, Heading, Stack, Switcher, Text } from "@gaze-ui/react";
 import * as React from "react";
 
-import { AlbumPostType } from "../../types";
+import { AlbumPostType } from "../../../types";
 import styles from "./album-post.module.css";
 
 export interface PostProps {

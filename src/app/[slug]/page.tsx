@@ -1,15 +1,15 @@
 import Head from "next/head";
 import * as React from "react";
 
-import { TypewrittenPost } from "../../components/typewritten-post/typewritten-post";
+import { TypewrittenPost } from "./components/typewritten-post";
 import { getAllPosts, getPostBySlug } from "../../lib/api";
 import { recognizeText } from "../../lib/recognize-text";
-import { AlbumPost } from "../../components/album-post/album-post";
+import { AlbumPost } from "./components/album-post";
 import mdToHtml from "../../lib/md-to-html";
 import { PostType } from "../../types";
 import { Metadata } from "next";
 import { Separator, Stack } from "@gaze-ui/react";
-import { Comments } from "../../components/comments/comments";
+import { Comments } from "./components/comments";
 
 type Props = {
   params: Promise<{ slug: string }>;

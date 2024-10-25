@@ -11,7 +11,7 @@ import {
 import Image from "next/image";
 import * as React from "react";
 
-import { TypewrittenPostType } from "../../types";
+import { TypewrittenPostType } from "../../../types";
 import styles from "./post.module.css";
 
 export interface PostProps {
